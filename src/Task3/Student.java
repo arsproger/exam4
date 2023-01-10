@@ -17,22 +17,23 @@ public class Student {
     }
 
     public static void checkStudentList(ArrayList<Student> list) {
-        for(Student student: list) {
-            if(student.getAvgAllTask() < 3) {
-                list.remove(student);
+        for (int i = 0; i < list.size(); i++) {
+            if(list.get(i).getAvgAllTask() < 3.0) {
+                list.remove(i);
             }
             else {
-                student.setCourse(student.getCourse() + 1);
+                list.get(i).setCourse(list.get(i).getCourse() + 1);
             }
         }
-        System.out.println(list);
     }
 
     public static void printStudents(List<Student> students, int course) {
+        System.out.println("Студенты с " + course + " курса:");
         for(Student student: students) {
             if(student.getCourse() == course) System.out.println(student);
         }
     }
+
 
     public String getName() {
         return name;
@@ -68,7 +69,7 @@ public class Student {
 
     @Override
     public String toString() {
-        return "Student{" +
+        return "\nStudent{" +
                 "name='" + name + '\'' +
                 ", group='" + group + '\'' +
                 ", course=" + course +
